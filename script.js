@@ -25,8 +25,26 @@ function criarCobrinha (){
 }
 
 function iniciarJogo(){
+     criarBG();
+     criarCobrinha();
+
+     let snakeX = snake[o].x;
+     let snakeY = snake[o].y;
+
+     if(direction =="right") snakeX += box;
+     if(direction =="left") snakeX -= box;
+     if(direction =="up") snakeY -= box;
+     if(direction =="down") snakeY += box;
      
+     snake.pop();
+
+     let newHead = {
+         x: snakeX,
+         y:snakeY
+
+     }
+
+     snake.unshift(newHead);
 }
 
-criarBG();
-criarCobrinha();
+let jogo = setInterval(iniciarJogo, 100);
